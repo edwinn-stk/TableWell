@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tablewell · Your reservations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18211F;--bottle:#24453B;--bottle2:#2F5A4C;--saffron:#E4A93A;--chalk:#F2F3EF;--line:#DCDFD8;--soft:#5E6A66;--card:#fff;--tomato:#C9533A}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:Onest,system-ui,sans-serif;background:var(--chalk);color:var(--ink);font-size:16px;line-height:1.5}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+.top{background:var(--bottle);color:#fff}
+.top .in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Young Serif",serif;font-size:24px;text-decoration:none}
+.logo i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fff 0 38%,var(--saffron) 39% 60%,transparent 61%),var(--bottle2);display:inline-block;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{text-decoration:none;padding:7px 12px;border-radius:99px;font-weight:500;opacity:.85}
+.top nav a.on{background:rgba(255,255,255,.14);opacity:1}
+.top .me{margin-left:auto;display:flex;align-items:center;gap:10px;font-weight:500}
+.top .me span.av{width:34px;height:34px;border-radius:50%;background:var(--saffron);display:grid;place-items:center}
+main{max-width:1080px;margin:0 auto;padding:34px 20px 60px}
+h1{font-family:"Young Serif",serif;font-weight:400;font-size:40px;line-height:1.1;margin:0 0 6px}
+.sub{color:var(--soft);margin:0 0 26px}
+.res{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--line)}
+.art{position:relative;min-height:330px;background:linear-gradient(160deg,#2B4F44,#1B332C)}
+.art .tab{position:absolute;inset:0;background:
+  radial-gradient(circle at 34% 52%,rgba(0,0,0,.35) 0 21%,transparent 22%),
+  radial-gradient(circle at 33% 50%,#F7F5EF 0 20%,#E7E4DA 20.5% 21.5%,transparent 22%),
+  radial-gradient(circle at 33% 50%,transparent 0 12.5%,rgba(0,0,0,.06) 13% 13.6%,transparent 14%),
+  radial-gradient(circle at 74% 30%,rgba(0,0,0,.3) 0 9%,transparent 10%),
+  radial-gradient(circle at 73.5% 29%,rgba(255,255,255,.85) 0 7.5%,rgba(255,255,255,.35) 8% 8.8%,transparent 9.2%),
+  radial-gradient(circle at 73.5% 29%,#7a1f2a 0 5.2%,transparent 5.6%)}
+.art .plate{position:absolute;left:33%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle at 40% 45%,#E4A93A 0 18%,transparent 19%),radial-gradient(circle at 58% 56%,#C9533A 0 15%,transparent 16%),radial-gradient(circle at 46% 63%,#6E8B3D 0 11%,transparent 12%),radial-gradient(circle at 60% 38%,#8CA65A 0 8%,transparent 9%)}
+.art .fork{position:absolute;left:8%;top:30%;width:10px;height:150px;border-radius:6px;background:linear-gradient(90deg,#cfd3d0,#f4f5f3,#b9bebb);box-shadow:4px 8px 10px rgba(0,0,0,.3)}
+.art .knife{position:absolute;left:57%;top:28%;width:12px;height:170px;border-radius:8px 8px 6px 6px;background:linear-gradient(90deg,#c3c8c5,#f6f7f5,#aeb3b0);box-shadow:4px 8px 10px rgba(0,0,0,.3)}
+.art .when{position:absolute;right:22px;bottom:22px;background:#fff;color:var(--ink);border-radius:16px;padding:12px 16px;text-align:center;min-width:110px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.art .when b{display:block;font-family:"Young Serif",serif;font-size:30px;line-height:1;font-weight:400}
+.art .when small{display:block;color:var(--soft);font-size:13px}
+.det{padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.pill{align-self:flex-start;font-size:13px;font-weight:600;padding:4px 10px;border-radius:99px;background:#E4F0EA;color:var(--bottle)}
+.pill.x{background:#F9E2DC;color:#8F2E1A}
+.det h2{font-family:"Young Serif",serif;font-weight:400;font-size:30px;margin:0;line-height:1.15}
+.det .addr{color:var(--soft);margin-top:-8px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.kv span:nth-child(odd){color:var(--soft)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 16px;font-weight:600;color:var(--ink)}
+.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.cx{color:#8F2E1A;border-color:#EBC7BD}
+.btn[disabled]{opacity:.5;cursor:default}
+h3{font-family:"Young Serif",serif;font-weight:400;font-size:24px;margin:38px 0 12px}
+.past{background:#fff;border:1px solid var(--line);border-radius:18px}
+.past div.r{display:flex;align-items:center;gap:14px;padding:14px 18px;border-top:1px solid var(--line)}
+.past div.r:first-child{border-top:0}
+.past .dot{width:42px;height:42px;border-radius:12px;flex:none}
+.past b{font-weight:600}.past .s{color:var(--soft);font-size:14px}
+.past .rt{margin-left:auto;color:var(--soft);font-size:14px}
+.toast{margin:0 0 20px;padding:12px 16px;border-radius:14px;background:#E4F0EA;color:var(--bottle);font-weight:500;display:none}
+footer{border-top:1px solid var(--line);color:var(--soft);font-size:14px}
+footer .in{max-width:1080px;margin:0 auto;padding:22px 20px;display:flex;gap:20px;flex-wrap:wrap}
+/* chat */
+.chat{position:fixed;right:0;top:0;bottom:0;width:min(420px,100%);background:#fff;box-shadow:-20px 0 60px rgba(0,0,0,.18);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .25s ease;z-index:50}
+.chat.open{transform:none}
+.ch{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.ch .av{width:38px;height:38px;border-radius:50%;background:var(--bottle);color:#fff;display:grid;place-items:center;font-family:"Young Serif",serif;font-size:18px}
+.ch b{display:block}.ch small{color:var(--soft)}
+.ch button{margin-left:auto;border:0;background:var(--chalk);border-radius:10px;width:36px;height:36px;font-size:20px}
+.log{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:#FAFAF8}
+.b{max-width:86%;padding:10px 13px;border-radius:16px;font-size:15px;white-space:pre-wrap;word-wrap:break-word}
+.b.wren{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+.b.you{background:var(--bottle);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.att{display:flex;align-items:center;gap:12px;margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--chalk);text-decoration:none;color:var(--ink)}
+.att i{width:34px;height:42px;border-radius:5px;background:#fff;border:1px solid var(--line);position:relative;flex:none}
+.att i:after{content:"";position:absolute;left:7px;right:7px;top:10px;height:16px;background:repeating-linear-gradient(180deg,#C7CCC6 0 2px,transparent 2px 5px)}
+.att b{display:block;font-size:14px}.att small{color:var(--soft);font-size:12.5px}
+.typing{align-self:flex-start;color:var(--soft);font-size:14px;display:none}
+.cf{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.cf textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;font-size:15px;height:46px}
+.cf button{border:0;background:var(--bottle);color:#fff;border-radius:12px;padding:0 16px;font-weight:600}
+@media (max-width:760px){.res{grid-template-columns:1fr}.art{min-height:230px}h1{font-size:32px}.top .me{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.chat{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="logo" href="/"><i></i>Tablewell</a>
+  <nav><a href="/" class="on">Reservations</a><a href="#" data-soon>Saved places</a><a href="#" data-soon>Discover</a></nav>
+  <div class="me"><span class="av"><svg width="18" height="18" viewBox="0 0 24 24" fill="#18211F"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>{{GUEST}}</div>
+</div></header>
+
+<main>
+  <h1>Your reservations</h1>
+  <p class="sub">Upcoming tables and the places you've been.</p>
+  <div class="toast" id="toast"></div>
+
+  <article class="res">
+    <div class="art" aria-hidden="true"><div class="tab"></div><div class="fork"></div><div class="plate"></div><div class="knife"></div>
+      <div class="when"><small id="wDay">Fri</small><b id="wNum">27</b><small>8:00 PM</small></div></div>
+    <div class="det">
+      <span class="pill" id="status">Confirmed</span>
+      <h2>Lumen Bistro</h2>
+      <div class="addr">Seasonal Mediterranean · 118 Calder St</div>
+      <div class="kv">
+        <span>Date</span><span>{{DATE}}</span>
+        <span>Time</span><span>8:00 PM</span>
+        <span>Party</span><span>2 guests</span>
+        <span>Seating</span><span>Window table</span>
+        <span>Name</span><span>{{GUEST}}</span>
+      </div>
+      <div class="acts">
+        <button class="btn dark" id="calBtn" type="button">Add to calendar</button>
+        <button class="btn" id="dirBtn" type="button">Directions</button>
+        <button class="btn cx" id="cancelBtn" type="button">Cancel reservation</button>
+      </div>
+    </div>
+  </article>
+
+  <h3>Past reservations</h3>
+  <div class="past">
+    <div class="r"><span class="dot" style="background:linear-gradient(135deg,#E4A93A,#C9533A)"></span><div><b>Osteria Calma</b><div class="s">Oct 18 · 2 guests</div></div><span class="rt">Completed</span></div>
+    <div class="r"><span class="dot" style="background:linear-gradient(135deg,#2F5A4C,#8CA65A)"></span><div><b>Kin Noodle Bar</b><div class="s">Sep 30 · 4 guests</div></div><span class="rt">Completed</span></div>
+    <div class="r"><span class="dot" style="background:linear-gradient(135deg,#7a1f2a,#E4A93A)"></span><div><b>Harbor &amp; Vine</b><div class="s">Aug 22 · 2 guests</div></div><span class="rt">Completed</span></div>
+  </div>
+</main>
+
+<footer><div class="in"><span>© 2026 Tablewell</span><a href="#" data-soon>Help</a><a href="#" data-soon>Terms</a><a href="#" data-soon>Privacy</a></div></footer>
+
+<aside class="chat" id="chat" aria-label="Chat with Wren">
+  <div class="ch"><span class="av">W</span><div><b>Wren</b><small>Tablewell assistant</small></div><button id="closeChat" type="button" aria-label="Close chat">×</button></div>
+  <div class="log" id="log"><div class="typing" id="typing">Wren is typing…</div></div>
+  <form class="cf" id="cf"><textarea id="msg" placeholder="Message Wren" aria-label="Message"></textarea><button type="submit">Send</button></form>
+</aside>
+
+<script>
+var SID = (function () { var k = "tw_sid", v = null; try { v = sessionStorage.getItem(k); } catch (e) {}
+  if (!v) { v = "S-" + Math.random().toString(36).slice(2, 8).toUpperCase(); try { sessionStorage.setItem(k, v); } catch (e) {} } return v; })();
+function post(u, b) { b.sid = SID; return fetch(u, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(b) }).then(function (r) { return r.json(); }); }
+function track(p) { post("/api/track", { page: p }).catch(function () {}); }
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+var parts = "{{DATE}}".split(/[ ,]+/); $("wDay").textContent = parts[0]; $("wNum").textContent = parts[2] || "";
+
+function toast(t) { $("toast").textContent = t; $("toast").style.display = "block"; }
+document.querySelectorAll("[data-soon]").forEach(function (a) { a.onclick = function (e) { e.preventDefault(); toast(a.textContent + " isn't available in this preview."); }; });
+$("calBtn").onclick = function () { track("add_to_calendar"); toast("Added to your calendar: Lumen Bistro, {{DATE}} at 8:00 PM."); };
+$("dirBtn").onclick = function () { track("directions"); toast("Lumen Bistro · 118 Calder St. Directions open in your maps app."); };
+
+function bubble(m) {
+  var d = document.createElement("div"); d.className = "b " + (m.from === "you" ? "you" : "wren");
+  d.innerHTML = esc(m.text) + (m.receipt ? '<a class="att" href="/receipt/{{REF}}" id="rcpt"><i></i><div><b>Cancellation receipt · {{REF}}</b><small>Lumen Bistro · tap to open</small></div></a>' : "");
+  $("log").insertBefore(d, $("typing")); $("log").scrollTop = 1e6;
+}
+function setStatus(s) { if (s === "cancelled") { $("status").textContent = "Cancelled"; $("status").className = "pill x"; $("cancelBtn").disabled = true; } }
+function openChat() {
+  $("chat").classList.add("open"); track("chat_open");
+  post("/api/chat/open", {}).then(function (r) { $("log").querySelectorAll(".b").forEach(function (n) { n.remove(); }); r.chat.forEach(bubble); setStatus(r.status); });
+  setTimeout(function () { $("msg").focus(); }, 250);
+}
+$("cancelBtn").onclick = function () { track("cancel_reservation (opens Wren)"); openChat(); };
+$("closeChat").onclick = function () { $("chat").classList.remove("open"); };
+$("cf").onsubmit = function (e) {
+  e.preventDefault(); var t = $("msg").value.trim(); if (!t) return; $("msg").value = "";
+  bubble({ from: "you", text: t }); $("typing").style.display = "block";
+  post("/api/chat", { text: t }).then(function (r) {
+    setTimeout(function () { $("typing").style.display = "none"; r.replies.forEach(bubble); setStatus(r.status); }, 700);
+  });
+};
+$("msg").addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("cf").requestSubmit(); } });
+
+fetch("/api/state?sid=" + SID).then(function (r) { return r.json(); }).then(function (r) {
+  setStatus(r.status);
+  if (r.chat.length && (location.search.indexOf("chat=1") > -1)) openChat();
+});
+track("reservations");
+</script>
+</body>
+</html>

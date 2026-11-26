@@ -1,0 +1,1 @@
+{ "name": "caso34-tablewell", "version": "1.0.0", "private": true, "scripts": { "start": "node tw-server.js" }, "engines": { "node": ">=18" } }
